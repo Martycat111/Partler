@@ -1,0 +1,23 @@
+body {
+    background-color: lightblue;
+}
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+button {
+  transition: 0.5s;
+  border: solid black;
+  border-width: 5px;
+  border-radius: 20px;
+  height: 15vh;
+  width: 15vh;
+}
+button:hover {
+  border-width: 1px;
+  border: solid gray;
+  size: 110%;
+}
