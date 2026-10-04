@@ -1,0 +1,19 @@
+[project]
+name = "partler"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Martycat111", email = "walfie308@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "sqlmodel>=0.0.47",
+]
+
+[project.scripts]
+partler = "partler:main"
+
+[build-system]
+requires = ["uv_build>=0.12.23,<0.13.0"]
+build-backend = "uv_build"
