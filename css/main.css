@@ -1,9 +1,15 @@
 body {
-    
     position: relative;
     width: 100vw;
     height: 100vh;
-    background-color: lightblue;
+    background-color: white;
+}
+
+greeting {
+  position: relative;
+  bottom: 100px;
+  font-size: larger;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .items div{
@@ -15,13 +21,25 @@ body {
 
   /* panel */
   width: 10vw;
-  aspect-ratio: 1 / 1.3; 
-  background-color: aqua;
-  border: solid blueviolet;
+  aspect-ratio: 1 / 1.2; 
+  background-color: whitesmoke;
+  border: solid lightgrey;
   border-radius: 25%;
   font-weight: bolder;
 
   margin: 25%;
+}
+
+.items div img{
+  /* now thats silly */
+  position: relative;
+  width: 8vw;
+  bottom: 2vw;
+}
+.items div p {
+  /*silly squared*/
+  position: fixed;
+  text-align: center;
 }
 
 .center {
@@ -29,7 +47,7 @@ body {
   margin: auto; 
   justify-content: center;
   align-items: center;
-  }
+}
 
 .grid {
   grid-template-columns: repeat(12, 1fr);
