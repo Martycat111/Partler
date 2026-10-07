@@ -7,7 +7,7 @@ body {
 
 greeting {
   position: relative;
-  bottom: 100px;
+  bottom: 20vh;
   font-size: larger;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
