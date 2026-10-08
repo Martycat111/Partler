@@ -26,7 +26,7 @@ check which parts you have with "view stock",
 and order only the ones you need.
 
 ## Cool buttons:
-[![Test_online](https://img.shields.io/badge/Test_Online-blue?style=flat-square)](https://martycat111.itch.io/froken)
+[![Test_online](https://img.shields.io/badge/Test_Online-blue?style=flat-square)](py.409060.xyz)
 
 ## How to contribute:
 * Submit new ideas on [this page](https://github.com/Martycat111/Partler/issues/new?q=is:issue+state:open), be sure to apply the idea label!
