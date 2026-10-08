@@ -6,8 +6,8 @@ body {
 }
 
 greeting {
-  position: relative;
-  bottom: 20vh;
+  position: absolute;
+  top: 20vh;
   font-size: larger;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -38,7 +38,8 @@ greeting {
 }
 .items div p {
   /*silly squared*/
-  position: fixed;
+  position: relative;
+  top: 70px;
   text-align: center;
 }
 

@@ -1,36 +1,73 @@
 from bottle import Bottle, run, static_file, response, SimpleTemplate
-from sqlmodel import Field, SQLModel
-
 from datetime import datetime
+from tinydb import TinyDB, Query
+
 app = Bottle()
 
-#sql
-#class item(SQLModel, table=True):
-#    id: int | None = Field(default=None, primary_key=True)
-#    name: str
-#    count: int
+### DATABASE
 
-username = "Alfie"
+db = TinyDB('db.json')
+Data = Query()
+db.insert({'name': 'John', 'age': 22})
+db.search(Data.name == 'John')
 
-parts_names = [
+try:
+    db.get(Data.uname)
+except:
+    print("boga ogla")
+
+raise Exception("Sorry, no") 
+# Create a database connection
+#db = Database('sqlite:///data.db')
+
+# Insert a record
+if db.get('data', {'uname'}) != None:
+    print("Database has entries... not defaulting database")
+else:
+    #no database entries
+    print("Setting up default database")
+    #create table
+
+    db.create_table('user', {
+        'uname': 'VARCHAR(100) NOT NULL'
+    })
+
+    db.create_table('parts', {
+    'id': 'INT AUTO_INCREMENT PRIMARY KEY',
+    'name': 'VARCHAR(100) NOT NULL',
+    'age': 'INT',
+    'salary': 'DECIMAL(10,2)',
+    'hire_date': 'DATETIME',
+    'is_active': 'BOOLEAN DEFAULT TRUE'
+    })
+
+    #insert data
+    db.set('parts', {'name': [
     "ham", 
     "burger",
     "screw",
-    "ben"
-]
-parts_counts = [
+    "ben"]})
+    db.set('parts', {'count': [
     2,
     1,
     5,
-    89
-]
-parts_images = [
+    89]})
+    db.set('parts', {'image': [
     None,
     None,
     None,
-    "bam.jpg"
-]
+    "bam.jpg"]})
 
+# Retrieve records
+username = db.get('user', {'uname'})
+print(username)
+
+parts_names  = db.get('parts', {'name'})
+parts_counts = db.get('parts', {'count'})
+parts_images = db.get('parts', {'image'})
+
+
+# END DATABAEES
 
 #main page
 main = open("templates/main.html", "r")
