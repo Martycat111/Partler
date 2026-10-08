@@ -7,9 +7,19 @@ body {
 
 greeting {
   position: absolute;
-  top: 20vh;
+  top: 30vh;
   font-size: larger;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 3vw;
+}
+showparttext {
+  position: absolute;
+  top: 2vh;
+  font-size: larger;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 3vw;
 }
 
 .items div{
@@ -31,13 +41,17 @@ greeting {
 }
 
 .items div img{
-  /* now thats silly */
+  /* now thats silly 
+  the item image
+  */
   position: relative;
   width: 8vw;
   bottom: 2vw;
 }
 .items div p {
-  /*silly squared*/
+  /*silly squared
+  the item name
+  */
   position: relative;
   top: 70px;
   text-align: center;

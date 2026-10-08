@@ -6,65 +6,42 @@ app = Bottle()
 
 ### DATABASE
 
-db = TinyDB('db.json')
-Data = Query()
-db.insert({'name': 'John', 'age': 22})
-db.search(Data.name == 'John')
+parts = TinyDB('parts.json')
+partdb = Query()
+user = TinyDB('users.json')
+userdb = Query()
 
 try:
-    db.get(Data.uname)
-except:
-    print("boga ogla")
+    if user.all()[0] == None:
+        raise Exception("Database is empty")
 
-raise Exception("Sorry, no") 
-# Create a database connection
-#db = Database('sqlite:///data.db')
-
-# Insert a record
-if db.get('data', {'uname'}) != None:
     print("Database has entries... not defaulting database")
-else:
-    #no database entries
+except:
     print("Setting up default database")
-    #create table
-
-    db.create_table('user', {
-        'uname': 'VARCHAR(100) NOT NULL'
-    })
-
-    db.create_table('parts', {
-    'id': 'INT AUTO_INCREMENT PRIMARY KEY',
-    'name': 'VARCHAR(100) NOT NULL',
-    'age': 'INT',
-    'salary': 'DECIMAL(10,2)',
-    'hire_date': 'DATETIME',
-    'is_active': 'BOOLEAN DEFAULT TRUE'
-    })
-
+    user.insert({'name': input("enter your name: ")})
     #insert data
-    db.set('parts', {'name': [
+    parts.insert({'names': [
     "ham", 
     "burger",
     "screw",
     "ben"]})
-    db.set('parts', {'count': [
+    parts.insert({'count': [
     2,
     1,
     5,
     89]})
-    db.set('parts', {'image': [
+    parts.insert({'image': [
     None,
     None,
     None,
     "bam.jpg"]})
 
 # Retrieve records
-username = db.get('user', {'uname'})
-print(username)
+username = user.all()[0].get('name')
 
-parts_names  = db.get('parts', {'name'})
-parts_counts = db.get('parts', {'count'})
-parts_images = db.get('parts', {'image'})
+parts_names  = parts.all()[0].get('names')
+parts_counts = parts.all()[1].get('count')
+parts_images = parts.all()[2].get('image')
 
 
 # END DATABAEES

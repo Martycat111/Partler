@@ -5,7 +5,7 @@
   </head>
 
   <body class="center">
-    <p>ur parts arr: </p>
+    <showparttext>ur parts arr: </showparttext>
     <div class="items">
 
         % for i in range(len(names)):
@@ -13,7 +13,6 @@
                 %if images[i] != None:
                     <img src="{{"img/" + images[i]}}">
                 %end
-
                 <p>{{counts[i]}} {{names[i]}}</p>
             </div>
         % end
