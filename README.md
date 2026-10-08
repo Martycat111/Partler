@@ -6,6 +6,8 @@ This only for now, don't expect (or even hope for) rapid development.
 Thanks for trying out my project!  
 
 # Quick-Start:
+Go down to the Cool buttons section,  
+and hit "Test online"
 
 # Software
 - Python 3.14
