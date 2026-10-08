@@ -74,6 +74,9 @@ def main():
         #just in case lol
         hour = 0
 
+    #in case of no time avialable, set to hello
+    greet = "Hello"
+
     if hour > 12 and hour < 17:
         greet = "Afternoon"
     if hour > 17 and hour < 24:
@@ -107,4 +110,4 @@ def image(file):
 
 #run
 if __name__ == '__main__':
-    app.run(host='localhost', port=8080)
+    app.run(host='0.0.0.0', port=80)
