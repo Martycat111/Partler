@@ -13,7 +13,7 @@ greeting {
   font-weight: bold;
   font-size: 3vw;
 }
-showparttext {
+titletext {
   position: absolute;
   top: 2vh;
   font-size: larger;
@@ -68,7 +68,7 @@ showparttext {
   /*silly squared
   the item name
   */
-  bottom: -0.5vw;
+  top: 20vw;
   left: 1vw;
   text-align: left;
   font-size: 1vw;
@@ -167,4 +167,19 @@ button {
 button:hover {
   border-width: 2px;
   border: solid gray;
+}
+
+
+
+
+/* hide number arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }

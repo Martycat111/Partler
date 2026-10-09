@@ -51,8 +51,8 @@ main = open("templates/main.html", "r")
 main_tpl = SimpleTemplate(main)
 
 #checkout parts page data
-checkout = open("html/out.html", "r")
-checkout_html = checkout.read()
+checkout = open("templates/checkout.html", "r")
+checkout_tpl = SimpleTemplate(checkout)
 
 #stylesheet
 css = open("css/main.css", "r")
@@ -91,7 +91,7 @@ def main():
 
 @app.route('/check-out') 
 def chkout():
-    return checkout_html
+    return checkout_tpl.render(names=parts_names, counts=parts_counts, images=parts_images)
 
 @app.route('/view-parts')
 def view_parts():
@@ -108,6 +108,12 @@ def image(file):
     print("GET: " + file)
     if static_file(file, root='img/') != None:
         return static_file(file, root='img/')
+
+@app.route('/js/<file>')
+def script(file):
+    response.content_type = "text/javascript"
+    if static_file(file, root='js/') != None:
+        return static_file(file, root='js/')
 
 #run
 if __name__ == '__main__':
