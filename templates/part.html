@@ -2,18 +2,40 @@
 <html>
   <head>
     <link href="/main.css" rel="stylesheet"/>
+    <script src="/js/part.js"></script>
   </head>
 
   <body class="center">
     <showparttext>ur parts arr: </showparttext>
     <div class="items">
-
         % for i in range(len(names)):
-            <div>
+            <div class="itemholder">
                 %if images[i] != None:
-                    <img src="{{"img/" + images[i]}}">
+                    <img class="itemimage" src="{{"img/" + images[i]}}">
                 %end
-                <p>{{counts[i]}} {{names[i]}}</p>
+                %if images[i] == None:
+                    <img class="itemimage" src="img/noimg.png">
+                %end
+                <div class="itemtextarea">
+                  <p class="itemname">{{names[i]}}</p>
+
+                  <div class="countinput" >
+                    <button id="minus" disabled="true">
+                      <p>
+                      -
+                      </p>
+                    </button>
+                    
+                    <input type="number" value={{counts[i]}} id="input" min="0" disabled="true"/>
+
+                    <button id="plus" disabled="true">
+                      <p>
+                      +
+                      </p>
+                    </button>
+                  </div>
+
+                </div>
             </div>
         % end
     </div>

@@ -1,1 +1,1 @@
-{"_default": {"1": {"names": ["ham", "burger", "screw", "ben"]}, "2": {"count": [2, 1, 5, 89]}, "3": {"image": [null, null, null, "bam.jpg"]}}}
+{"_default": {"1": {"names": ["ham", "burger", "screw", "ben"]}, "2": {"count": [2, 1, 5, 89]}, "3": {"image": ["bam.png", null, "bam.png", "bam.png"]}}}

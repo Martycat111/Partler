@@ -1,6 +1,6 @@
-from bottle import Bottle, run, static_file, response, SimpleTemplate
+from bottle import Bottle, run, static_file, response, SimpleTemplate # type: ignore
 from datetime import datetime
-from tinydb import TinyDB, Query
+from tinydb import TinyDB, Query # type: ignore
 
 app = Bottle()
 
@@ -34,7 +34,7 @@ except:
     None,
     None,
     None,
-    "bam.jpg"]})
+    "bam.png"]})
 
 # Retrieve records
 username = user.all()[0].get('name')
@@ -106,7 +106,8 @@ def style():
 @app.route('/img/<file>')
 def image(file):
     print("GET: " + file)
-    return static_file(file, root='img/')
+    if static_file(file, root='img/') != None:
+        return static_file(file, root='img/')
 
 #run
 if __name__ == '__main__':
