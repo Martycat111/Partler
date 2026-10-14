@@ -5,6 +5,8 @@ check in, out and view stock easily.
 This only for now, don't expect (or even hope for) rapid development.  
 Thanks for trying out my project!  
 
+<img width="1068" height="406" alt="Screenshot_20261014_201441" src="https://github.com/user-attachments/assets/2ddb810d-cdae-4fd6-ab67-33e27dfa9cb1" />
+
 # Quick-Start:
 Go down to the Cool buttons section,  
 and hit "Test online"
