@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="/main.css" rel="stylesheet"/>
+    <link href="/css/part.css" rel="stylesheet"/>
   </head>
 
   <body class="center">
+
+    <a href="/">
+    <button class="backbutton">
+      <img src="img/back.png">
+      <p>back</p>
+    </button>
+    </a>
+
     <titletext>Your parts are: </titletext>
     <div class="items">
         % for i in range(len(names)):
@@ -19,14 +27,6 @@
                   <p class="itemname">{{names[i]}}</p>
 
                   <div class="countinput" >
-                    <button
-                    disabled="true"
-                    id="minus"
-                    class="value-control"
-                    title="Decrease value"
-                    aria-label="Decrease value"><p>-</p></button>
-
-
                     <input
                     disabled="true"
                     class="numberInput"
@@ -35,13 +35,6 @@
                     name="numberInput"
                     id="input"
                     step="1">
-
-                    <button
-                    disabled="true"
-                    id="plus"
-                    class="value-control"
-                    title="Increase value"
-                    aria-label="Increase value"><p>+</p></button>
                   </div>
 
                 </div>

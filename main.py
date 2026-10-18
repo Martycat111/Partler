@@ -98,14 +98,14 @@ def view_parts():
     return part_tpl.render(names=parts_names, counts=parts_counts, images=parts_images)
 
 #resources
-@app.route('/main.css')
-def style():
+@app.route('/css/<file>')
+def style(file):
     response.content_type = "text/css"
-    return main_css
+    if static_file(file, root='css/') != None:
+            return static_file(file, root='css/')
 
 @app.route('/img/<file>')
 def image(file):
-    print("GET: " + file)
     if static_file(file, root='img/') != None:
         return static_file(file, root='img/')
 

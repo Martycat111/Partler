@@ -24,7 +24,7 @@ titletext {
 
 .itemholder{
 
-  overflow: show;
+  overflow: hidden;
 
   text-align: center;
   position: relative;
@@ -51,7 +51,7 @@ titletext {
   width: 10vw;
   bottom: 2vw;
 
-  object-fit: contain; 
+  object-fit: cover;
 
 }
 
@@ -59,7 +59,7 @@ titletext {
   position: absolute;
   bottom: 0px;
   width: 10vw;
-  height: 4vw;
+  height: 3vw;
   background-color: lightgray;
   border-radius: 0vw 0vw 1.8vw 1.8vw;
 }
@@ -68,8 +68,9 @@ titletext {
   /*silly squared
   the item name
   */
-  top: 20vw;
-  left: 1vw;
+  position: relative;
+  top: 0vw;
+  left: 1.5vw;
   text-align: left;
   font-size: 1vw;
   font-weight: bold;
@@ -79,7 +80,7 @@ titletext {
 .countinput {
   position: absolute;
   right: 3vw;
-  bottom: 2vw;
+  bottom: 1.2vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
@@ -91,16 +92,20 @@ titletext {
 
 #minus {
   border-radius: 20px 0px 0px 20px;
-  left: 100%;
 }
 
 #plus {
   border-radius: 0px 20px 20px 0px;
-  right: 100%;
+}
+
+#plus p {
+  right: 0.3vw;
+}
+#minus p {
+  right: 0.2vw;
 }
 
 .countinput button p {
-  text-align: left;
   font-size: 1vw;
   font-weight: bold;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -110,27 +115,30 @@ titletext {
   justify-self: center;
   text-align: center;
   margin: auto;
-  right: 0.3vw;
 }
 
 .countinput button {
-  border: solid black;
+  border: solid gray;
   border-width: 2px;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-weight: bold;
   font-size: 0.7vw;
-  background-color: green;
+  background-color: lightblue;
   width: 1vw;
-  height: 2vw;
+  height: 1.5vw;
   margin: 0px;
 }
 
 .countinput input {
-  border: solid black;
+  font-size: 0.91vw;
+  font-weight:lighter;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+  border: solid gray;
   border-width: 2px;
-  background-color: lightgreen;
-  width: 1.5vw; 
-  height: 1.64vw;
+  background-color: lightblue;
+  width: 1.2vw; 
+  height: 1.15vw;
 }
 
 .center {
@@ -156,30 +164,9 @@ button {
 }
 
 button {
-  transition: 0.7s;
   border: solid black;
   border-width: 3px;
   border-radius: 20px;
   height: 20vh;
   aspect-ratio: 1.4 / 1; 
-}
-
-button:hover {
-  border-width: 2px;
-  border: solid gray;
-}
-
-
-
-
-/* hide number arrows */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfield;
 }
