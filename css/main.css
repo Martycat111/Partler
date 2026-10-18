@@ -6,40 +6,139 @@ body {
 }
 
 greeting {
-  position: relative;
-  bottom: 20vh;
+  position: absolute;
+  top: 30vh;
   font-size: larger;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 3vw;
+}
+titletext {
+  position: absolute;
+  top: 2vh;
+  font-size: larger;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 3vw;
 }
 
-.items div{
-  /*center */
-  display: flex; 
-  margin: auto; 
+.itemholder{
+
+  overflow: hidden;
+
+  text-align: center;
+  position: relative;
+  margin: auto;
   justify-content: center;
-  align-items: center;
 
   /* panel */
   width: 10vw;
-  aspect-ratio: 1 / 1.2; 
+  aspect-ratio: 1 / 1.1; 
   background-color: whitesmoke;
   border: solid lightgrey;
-  border-radius: 25%;
+  border-width: 3px;
+  border-radius: 2vw;
   font-weight: bolder;
 
-  margin: 25%;
+  margin: 0.2vw;
 }
 
-.items div img{
-  /* now thats silly */
-  position: relative;
-  width: 8vw;
+.itemimage{
+  /* now thats silly 
+  the item image
+  */
+  border-radius: 1.8vw 1.8vw 0vw 0vw;
+  width: 10vw;
   bottom: 2vw;
+
+  object-fit: cover;
+
 }
-.items div p {
-  /*silly squared*/
-  position: fixed;
+
+.itemtextarea{
+  position: absolute;
+  bottom: 0px;
+  width: 10vw;
+  height: 3vw;
+  background-color: lightgray;
+  border-radius: 0vw 0vw 1.8vw 1.8vw;
+}
+
+.itemname {
+  /*silly squared
+  the item name
+  */
+  position: relative;
+  top: 0vw;
+  left: 1.5vw;
+  text-align: left;
+  font-size: 1vw;
+  font-weight: bold;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.countinput {
+  position: absolute;
+  right: 3vw;
+  bottom: 1.2vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  justify-self: right;
+  align-self: start;
+  width: 2vw;
+  height: 1vw;
+}
+
+#minus {
+  border-radius: 20px 0px 0px 20px;
+}
+
+#plus {
+  border-radius: 0px 20px 20px 0px;
+}
+
+#plus p {
+  right: 0.3vw;
+}
+#minus p {
+  right: 0.2vw;
+}
+
+.countinput button p {
+  font-size: 1vw;
+  font-weight: bold;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+  position: relative;
+  align-self: center;
+  justify-self: center;
   text-align: center;
+  margin: auto;
+}
+
+.countinput button {
+  border: solid gray;
+  border-width: 2px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 0.7vw;
+  background-color: lightblue;
+  width: 1vw;
+  height: 1.5vw;
+  margin: 0px;
+}
+
+.countinput input {
+  font-size: 0.91vw;
+  font-weight:lighter;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+  border: solid gray;
+  border-width: 2px;
+  background-color: lightblue;
+  width: 1.2vw; 
+  height: 1.15vw;
 }
 
 .center {
@@ -65,15 +164,9 @@ button {
 }
 
 button {
-  transition: 0.7s;
   border: solid black;
   border-width: 3px;
   border-radius: 20px;
   height: 20vh;
   aspect-ratio: 1.4 / 1; 
-}
-
-button:hover {
-  border-width: 2px;
-  border: solid gray;
 }

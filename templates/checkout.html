@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/css/checkout.css" rel="stylesheet"/>
+  </head>
+
+  <body class="center">
+
+    <a href="/">
+    <button class="backbutton">
+      <img src="img/back.png">
+      <p>back</p>
+    </button>
+    </a>
+
+    <titletext>Check-out parts here! </titletext>
+    <div class="items">
+        % for i in range(len(names)):
+            <div class="itemholder">
+                %if images[i] != None:
+                    <img class="itemimage" src="{{"img/" + images[i]}}">
+                %end
+                %if images[i] == None:
+                    <img class="itemimage" src="img/noimg.png">
+                %end
+                <div class="itemtextarea">
+                  <p class="itemname">{{names[i]}}</p>
+
+                  <div class="countinput">
+                    <input
+                    class="numberInput"
+                    type="number"
+                    value="0"
+                    name="numberInput"
+                    id="input">
+                    <p>Available: {{counts[i]}}</p>
+                  </div>
+                </div>
+            </div>
+        % end
+
+        <footer class="bottombar">
+          <button class="checkout-button">
+            <p>Check out!</p>
+          </button>
+        </footer>
+    </div>
+
+  </body>
+
+</html>
