@@ -28,13 +28,16 @@
 
                   <div class="countinput">
                     <input
+                    min="0"
+                    max="{{counts[i]}}"
                     class="numberInput"
                     type="number"
                     value="0"
                     name="numberInput"
                     id="input">
-                    <p>Available: {{counts[i]}}</p>
+                    
                   </div>
+                  <p class="available-amount">/ {{counts[i]}}</p>
                 </div>
             </div>
         % end

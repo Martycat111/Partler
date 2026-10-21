@@ -202,3 +202,13 @@ button {
   font-size: 1.4vw;
   bottom: 1vw;
 }
+
+.available-amount {
+  width: 2vw;
+  position: absolute;
+  right: 0.5vw;
+  top: 0.05vw;
+  font-size: 0.91vw;
+  font-weight:lighter;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
