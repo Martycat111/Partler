@@ -32,7 +32,9 @@
                     type="number"
                     value="0"
                     name="numberInput"
-                    id="input">
+                    id="input"
+                    min="0"
+                    max="{{counts[i]}}">
                     <p>Available: {{counts[i]}}</p>
                   </div>
                 </div>
@@ -40,9 +42,9 @@
         % end
 
         <footer class="bottombar">
-          <button class="checkout-button">
+          <input type="submit" class="checkout-button">
             <p>Check out!</p>
-          </button>
+          </input>
         </footer>
     </div>
 

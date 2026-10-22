@@ -6,9 +6,9 @@ app = Bottle()
 
 ### DATABASE
 
-parts = TinyDB('parts.json')
+parts = TinyDB('db/parts.json')
 partdb = Query()
-user = TinyDB('users.json')
+user = TinyDB('db/users.json')
 userdb = Query()
 
 try:
