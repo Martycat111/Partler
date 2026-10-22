@@ -2,6 +2,7 @@
 <html>
   <head>
     <link href="/css/checkout.css" rel="stylesheet"/>
+    <script src="/js/checkout.js"></script>
   </head>
 
   <body class="center">
@@ -28,6 +29,8 @@
 
                   <div class="countinput">
                     <input
+                    min="0"
+                    max="{{counts[i]}}"
                     class="numberInput"
                     type="number"
                     value="0"
