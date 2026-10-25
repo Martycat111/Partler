@@ -1,4 +1,4 @@
-from bottle import Bottle, run, static_file, response, SimpleTemplate # type: ignore
+from bottle import Bottle, run, static_file, response, SimpleTemplate, request # type: ignore
 from datetime import datetime
 from tinydb import TinyDB, Query # type: ignore
 
@@ -6,9 +6,9 @@ app = Bottle()
 
 ### DATABASE
 
-parts = TinyDB('parts.json')
+parts = TinyDB('db/parts.json')
 partdb = Query()
-user = TinyDB('users.json')
+user = TinyDB('db/users.json')
 userdb = Query()
 
 try:
@@ -47,20 +47,24 @@ parts_images = parts.all()[2].get('image')
 # END DATABAEES
 
 #main page
-main = open("templates/main.html", "r")
-main_tpl = SimpleTemplate(main)
+main_path = "templates/main.html"
+
+#main = open("templates/main.html", "r")
+#main_tpl = SimpleTemplate(main)
 
 #checkout parts page data
-checkout = open("templates/checkout.html", "r")
-checkout_tpl = SimpleTemplate(checkout)
+checkout_path = "templates/checkout.html"
+#checkout = open("templates/checkout.html", "r")
+#checkout_tpl = SimpleTemplate(checkout)
 
 #stylesheet
 css = open("css/main.css", "r")
 main_css = css.read()
 
 #part templagte
-part = open("templates/part.html")
-part_tpl = SimpleTemplate(part)
+part_path = "templates/part.html"
+#part = open("templates/part.html")
+#part_tpl = SimpleTemplate(part)
 
 
 
@@ -85,16 +89,30 @@ def main():
         greet = "(Early) Morning"
     if hour > 5 and hour < 12:
         greet = "Morning"
+
+
+    main = open(main_path, "r")
+    main_tpl = SimpleTemplate(main)
     
     return main_tpl.render(time_greeting=greet, name=username)
 
 
+@app.route('/check-out', method='POST')
+def index():
+    for l in request.body:
+        print(l)
+    print(request.body.readlines())
+
 @app.route('/check-out') 
 def chkout():
+    checkout = open(checkout_path, "r")
+    checkout_tpl = SimpleTemplate(checkout)
     return checkout_tpl.render(names=parts_names, counts=parts_counts, images=parts_images)
 
 @app.route('/view-parts')
 def view_parts():
+    part = open(part_path, "r")
+    part_tpl = SimpleTemplate(part)
     return part_tpl.render(names=parts_names, counts=parts_counts, images=parts_images)
 
 #resources

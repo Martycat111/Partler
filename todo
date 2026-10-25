@@ -1,3 +1,8 @@
-[ ] Remove additional buttons on input, use integrated default ones.
-[ ] Back buttons
+[x] Remove additional buttons on input, use integrated default ones.
+[x] Back buttons
 [ ] Checkout submission to api
+[x] Grid layout (2x1) for the back buttons
+[x] Js change text test
+[ ] Fade settings in and out
+[x] Dynamic resources on main.py
+[o] Count items checking out

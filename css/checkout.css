@@ -1,3 +1,7 @@
+/* note to self:
+align = vertical
+justify = horizontal
+*/
 body {
     position: relative;
     width: 100vw;
@@ -14,12 +18,8 @@ titletext {
 }
 
 .itemholder{
-
   overflow: hidden;
-
-  text-align: center;
   position: relative;
-  margin: auto;
   justify-content: center;
 
   /* panel */
@@ -47,6 +47,10 @@ titletext {
 }
 
 .itemtextarea{
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
   position: absolute;
   bottom: 0px;
   width: 10vw;
@@ -54,46 +58,24 @@ titletext {
   background-color: lightgray;
   border-radius: 0vw 0vw 1.8vw 1.8vw;
 }
-
 .itemname {
   /*silly squared
   the item name
   */
-  position: relative;
-  top: 0vw;
-  left: 1.5vw;
-  text-align: left;
+  text-align: right;
+  width: 4vw;
   font-size: 1vw;
   font-weight: bold;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
-.countinput {
-  position: absolute;
-  right: 3vw;
-  bottom: 1.2vw;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  justify-self: right;
-  align-self: start;
+.available-amount {
   width: 2vw;
-  height: 1vw;
-}
-
-.countinput button p {
   font-size: 1vw;
   font-weight: bold;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
-  position: relative;
-  align-self: center;
-  justify-self: center;
-  text-align: center;
-  margin: auto;
 }
-
-.countinput button {
+/* removed: unused
+.itemtextarea button {
   border: solid gray;
   border-width: 2px;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -104,8 +86,8 @@ titletext {
   height: 1.5vw;
   margin: 0px;
 }
-
-.countinput input {
+*/
+.numberInput {
   font-size: 0.91vw;
   font-weight:lighter;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -123,12 +105,12 @@ titletext {
   justify-content: center;
   align-items: center;
 }
-
 .grid {
   grid-template-columns: repeat(12, 1fr);
 }
-
 .items {
+  width: 60vw;
+  height: 60vh;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -145,9 +127,6 @@ button {
   aspect-ratio: 1.4 / 1; 
 }
 
-
-
-
 .bottombar {
   /*the checkout page bar */
 
@@ -155,50 +134,68 @@ button {
 
   background-color: #AFAFAF;
 
-  height: auto;
+  height: 5vh;
   width: 80vw;
 
   position: fixed;
   bottom: 0;
   justify-self: center;
-
+  align-items: center;
   padding: 0.6vw 1vw 0.2vw;
+}
+.total {
+  position: relative;
+
+  margin: 0;
+  margin-right: 1vw;
+
+  font-family: Arial, Helvetica, sans-serif;
+  color: #706f6f;
+  font-size: 1vw;
+  font-weight: bolder;
+
+  top: 1.25vh;
+  align-self: center;
+  float: right;
 }
 
 .checkout-button {
+  text-align: center;
   height: 5vh;
   aspect-ratio: 3/1; /* width, height */
   float: right;
-  /* margin-right: 2vw; */
 }
-
 .checkout-button :hover {
   background-color: #AFAFAF;
 }
-
 .checkout-button p{
+  margin: 0;
+  align-self: center;
   position: relative;
   font-size: 1vw;
-  bottom: 1.5vh;
 }
-
 .backbutton {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
   position: absolute;
   top: 1vw;
   left: 1vw;
-
   width: 7vw;
   height: 3vw;
+
+  font-size: 25px;
+  font-weight: bolder;
+  border: solid black;
+  border-width: 3px;
+  border-radius: 20px;
 }
-
-
 .backbutton img {
-  float: left;
   width: 2vw;
   height: 2vw;
 }
 .backbutton p {
-  position: relative;
+  margin: 0;
   font-size: 1.4vw;
-  bottom: 1vw;
 }

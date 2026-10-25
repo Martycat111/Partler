@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="/css/global.css" rel="stylesheet"/>
     <link href="/css/main.css" rel="stylesheet"/>
+    <script src="/js/main.js"></script>
   </head>
 
   <body class="center">
     <greeting>{{time_greeting}}, {{name}}</greeting>
+
     <div class="grid">
 
-        <button type="button">Check-in</button>
+        <a href="check-in" disabled="true"><button disabled="true" type="button">Check-in</button></a>
         <a href="view-parts"><button type="button">View Parts</button></a>
         <a href="check-out"><button type="button">Check-out</button></a>
-        
     </div>
 
+    <button class="settings-btn" type="button" onclick="show_settings()">Settings</button>
+    <div class="settings-div" id="settings">
+      <p id="demo">settings ahhh</p>
+      <button class="settings-exit" onclick="hide_settings()">
+        <img src="img/back.png">
+        <p>back</p>
+      </button>
+    </div>
   </body>
 
 </html>

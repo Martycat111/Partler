@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="/css/global.css" rel="stylesheet"/>
     <link href="/css/checkout.css" rel="stylesheet"/>
+    <script src="/js/checkout.js"></script>
   </head>
 
   <body class="center">
@@ -26,23 +28,27 @@
                 <div class="itemtextarea">
                   <p class="itemname">{{names[i]}}</p>
 
-                  <div class="countinput">
-                    <input
-                    class="numberInput"
-                    type="number"
-                    value="0"
-                    name="numberInput"
-                    id="input">
-                    <p>Available: {{counts[i]}}</p>
-                  </div>
+                  <input
+                  onChange="update_running_total()"
+                  class="numberInput"
+                  type="number"
+                  value="0"
+                  name="numberInput"
+                  min="0"
+                  max="{{counts[i]}}">
+
+                  <p class="available-amount">/ {{counts[i]}}</p>
+
+                  
                 </div>
             </div>
         % end
 
         <footer class="bottombar">
-          <button class="checkout-button">
+          <button class="checkout-button" onclick="checkout()">
             <p>Check out!</p>
           </button>
+          <p class="total">Running total: 0</p>
         </footer>
     </div>
 

@@ -1,3 +1,8 @@
+/*
+NOTE TO SHELF
+border needs to be solid colour
+not colour.
+*/
 body {
     position: relative;
     width: 100vw;
@@ -158,15 +163,74 @@ titletext {
   grid-template-rows: repeat(2, 1fr);
 }
 
-button {
+.grid button:not(.settings-btn) {
   font-size: 25px;
   font-weight: bolder;
-}
 
-button {
   border: solid black;
   border-width: 3px;
   border-radius: 20px;
   height: 20vh;
   aspect-ratio: 1.4 / 1; 
 }
+
+
+.settings-btn {
+  position: absolute;
+  bottom: 0.5vw;
+  left: 0.5vw;
+  width: 5vw;
+  opacity: 75%;
+
+  font-size: 1vw;
+
+  border: solid black;
+  border-width: 2px;
+  border-radius: 20px;
+}
+.settings-div {
+  position: absolute;
+  background-color: darkgrey;
+  width: 80vw;
+  height: 80vh;
+  
+  border: solid gray;
+  border-width: medium;
+
+  border-radius: 5vw;
+
+  display: none;
+}
+.settings-div p {
+  align-self: center;
+  justify-self: center;
+}
+
+
+.settings-exit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  position: absolute;
+  top: 2vw;
+  left: 2vw;
+  width: 7vw;
+  height: 3vw;
+
+  font-size: 25px;
+  font-weight: bolder;
+  border: solid black;
+  border-width: 3px;
+  border-radius: 20px;
+}
+.settings-exit img {
+  width: 2vw;
+  height: 2vw;
+}
+.settings-exit p {
+  margin: 0;
+  font-size: 1.4vw;
+}
+
+
+/* animations */
