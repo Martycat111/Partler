@@ -1,6 +1,7 @@
 from bottle import Bottle, run, static_file, response, SimpleTemplate, request # type: ignore
 from datetime import datetime
 from tinydb import TinyDB, Query # type: ignore
+import json
 
 app = Bottle()
 
@@ -49,13 +50,9 @@ parts_images = parts.all()[2].get('image')
 #main page
 main_path = "templates/main.html"
 
-#main = open("templates/main.html", "r")
-#main_tpl = SimpleTemplate(main)
-
 #checkout parts page data
 checkout_path = "templates/checkout.html"
-#checkout = open("templates/checkout.html", "r")
-#checkout_tpl = SimpleTemplate(checkout)
+
 
 #stylesheet
 css = open("css/main.css", "r")
@@ -63,10 +60,6 @@ main_css = css.read()
 
 #part templagte
 part_path = "templates/part.html"
-#part = open("templates/part.html")
-#part_tpl = SimpleTemplate(part)
-
-
 
 #pages
 @app.route('/')
@@ -97,11 +90,22 @@ def main():
     return main_tpl.render(time_greeting=greet, name=username)
 
 
-@app.route('/check-out', method='POST')
+@app.route('/check-out/post', method='POST')
 def index():
-    for l in request.body:
-        print(l)
-    print(request.body.readlines())
+    #update available items on checkout
+
+    #get data
+    req_data = request.body.readlines()[0]
+    data = json.loads(req_data)
+    #removing_names = data["names"]
+    removing_counts = data["counts"]
+
+    for i in range(0, len(removing_counts)):
+        #runs for each item
+        print("remove item functionality here")
+        #if removing_counts[i] > 0:
+            #removing an item
+            #parts.update({'counts'[i]: removing_counts[i]})
 
 @app.route('/check-out') 
 def chkout():

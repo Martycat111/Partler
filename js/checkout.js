@@ -1,34 +1,60 @@
 
 function checkout() {
-    console.log("tbd")
+
+    if (get_total_items() == 0) {
+        // no items checked out
+        // add functionality for telling user no items here
+        console.log("No items to check-out")
+        return
+    }
+
+    // initial json object
+    const jsonObject = {};
+
+    // add things to json
+
+    // get elements for use
+    var itemnames = document.getElementsByClassName("itemname");
+    var itemcounts = document.getElementsByClassName("numberInput");
+    var numitems = document.getElementsByClassName("itemholder").length; // had item instead of itemholder. spent 2 hours debugging this
+
+    // initialize arrays to put info into
+    var names = [];
+    var counts = [];
+
+    //loop and add items to array
+    for(var i = 0; i < numitems; i++) {
+        counts[i] = itemcounts[i].valueAsNumber;
+        names[i] = itemnames[i].innerText;
+    }
+
+    //add arrays to the json
+    jsonObject.names = names;
+    jsonObject.counts = counts;
+
+    // turn obj into json
+    const jsonString = JSON.stringify(jsonObject);
 
     // POST request using fetch()
-    fetch(window.location.href, {
-    
+    fetch([window.location.href, "/post"].join(""), {
         // Adding method type
         method: "POST",
-    
         // Adding body or contents to send
-        body: JSON.stringify({
-            title: "foo",
-            body: "bar",
-            userId: 1
-        }),
-
+        body: jsonString,
         // Adding headers to the request
         headers: {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
 
-    // Converting to JSON
-    .then(response => response.json())
-    
-    // Displaying results to console
-    .then(json => console.log(json));
-
 }
 function update_running_total() {
+    var number = get_total_items()
+    var runningtotal = document.getElementsByClassName("total")
+    runningtotal[0].innerText = `Running total: ${number}`
+}
+
+function get_total_items() {
     // Partial Source - https://stackoverflow.com/a/5338729
     // Posted by erickb, modified by community. See post 'Timeline' for change history
     // Retrieved 2026-10-24, License - CC BY-SA 4.0
@@ -41,6 +67,5 @@ function update_running_total() {
     for(var i = 0; i < elements.length; i++) {
         number += elements[i].valueAsNumber;
     }
-    var runningtotal = document.getElementsByClassName("total")
-    runningtotal[0].innerText = `Running total: ${number}`
+    return number
 }

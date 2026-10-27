@@ -1,8 +1,46 @@
+[x] = done
+[o] = doing
+[ ] = not done
+
+# DONE
+[x] Home page w/ name and time greeting
+[x] Tinydb functionality
+[x] Db init
 [x] Remove additional buttons on input, use integrated default ones.
 [x] Back buttons
-[ ] Checkout submission to api
 [x] Grid layout (2x1) for the back buttons
 [x] Js change text test
-[ ] Fade settings in and out
 [x] Dynamic resources on main.py
-[o] Count items checking out
+[x] Count items checking out
+# TBD
+[o] Checkout submission via POST
+    * Remove items with count of 0
+    * Tell user if no items are being checkedout and reject
+    * Remove Items from db
+    * Set last checked-out info
+    * Redirect user to Post check-out page (tbd, different task)
+
+[ ] Show the user where parts are after checking out
+    * Add parts location field to db
+    * Update db init
+    * Make last
+    * Use last checked-out info to show post checkout items
+    * Do css (ugh)
+[ ] Check in items page (w/ creating items)
+    * Add js POST for creating items
+    * Add js POST for adding items to a pre-existing type
+    * update Db so there isn't stale info and the script doesn't have to restart.
+        - refresh db function
+        - see "# Retrieve records" 
+        - run function after check in and out
+    * "Add item" button
+    * User picks whether the item already exists or if it is a new type
+    * User writes where the item is (short desc e.g. "Your parts are: {{user_pos_desc[i]}}")
+    * User is shown a preview of what will be shown on check out
+[ ] Show user no items text if there is no items
+    * Do this in template
+[ ] Settings page (low priority)
+    * db for settings
+    * load settings from db
+    * set checks based of db (js)
+    * show or hide elements on each page based of settings (js)
