@@ -52,6 +52,11 @@ except:
     None,
     None,
     "bam.png"]})
+    parts.insert({'location': [
+    None,
+    None,
+    None,
+    "bam.png"]})
 
 # Retrieve records initially
 username = user.all()[0].get('name')
@@ -63,9 +68,11 @@ parts_images = parts.all()[2].get('image')
 #main page
 main_path = "templates/main.html"
 
-#checkout parts page data
+#checkout parts page
 checkout_path = "templates/checkout.html"
 
+#find parts (after checkout) page
+loc_path = "templates/locate.html"
 
 #stylesheet
 css = open("css/main.css", "r")
@@ -73,6 +80,11 @@ main_css = css.read()
 
 #part templagte
 part_path = "templates/part.html"
+
+#default lasts
+last_checked_out_names = None
+last_checked_out_counts = None
+last_checked_out_images = None
 
 #pages
 @app.route('/')
@@ -135,6 +147,11 @@ def index():
         
     update_db()
 
+@app.route('/parts-location')
+def locate():
+    loc = open(loc_path, "r")
+    loc_tpl = SimpleTemplate(loc)
+    return loc_tpl.render(items_counts=last_checked_out_counts, items_names=last_checked_out_names )
 @app.route('/check-out') 
 def chkout():
     checkout = open(checkout_path, "r")

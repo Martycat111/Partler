@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/css/global.css" rel="stylesheet"/>
+    <link href="/css/locate.css" rel="stylesheet"/>
+  </head>
+
+  <body class="center">
+
+    <a href="/">
+    <button class="backbutton">
+      <img src="img/back.png">
+      <p>back</p>
+    </button>
+    </a>
+
+    <titletext>Checked out parts</titletext>
+    <div class="items">
+        % if items_counts == None:
+          <p class="noitems">No items have been checked out</p>
+        % else:
+        % for i in range(len(items_names)):
+            <div class="itemholder">
+                %if images[i] != None:
+                    <img class="itemimage" src="{{"img/" + images[i]}}">
+                %end
+                %if images[i] == None:
+                    <img class="itemimage" src="img/noimg.png">
+                %end
+                <div class="itemtextarea">
+                  <p class="itemname">{{items_names[i]}}</p>
+
+                  <input
+                  onChange="update_running_total()"
+                  class="numberInput"
+                  type="number"
+                  value="0"
+                  name="numberInput"
+                  min="0"
+                  max="{{counts[i]}}">
+
+                  <p class="available-amount">/ {{items_counts[i]}}</p>
+
+                  
+                </div>
+            </div>
+        % end
+        % end
+
+        <footer class="bottombar">
+          <button class="checkout-button" onclick="checkout()" disabled="true">
+            <p>Check out!</p>
+          </button>
+          <p class="total">Running total: 0</p>
+        </footer>
+    </div>
+
+  </body>
+
+</html>

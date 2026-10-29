@@ -46,8 +46,9 @@ function checkout() {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-    // reload page to reflect changes, this shouldn't be necessary later because there will be another page
-    location.reload();
+    // change page
+    var base_url = window.location.origin;
+    document.location.href = [base_url, "/parts-location"].join("");
 }
 function update_running_total() {
     var number = get_total_items()

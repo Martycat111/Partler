@@ -201,8 +201,10 @@ button {
   font-size: 1.4vw;
 }
 .noitems {
+  font-weight: bolder;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   position: absolute;
   justify-self: center;
-  font-size: 5vw;
+  font-size: 2.5vw;
   color: #706f6f
 }

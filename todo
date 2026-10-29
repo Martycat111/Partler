@@ -12,15 +12,15 @@
 [x] Js change text test
 [x] Dynamic resources on main.py
 [x] Count items checking out
+[x] Show user no items text if there is no items
+[x] Checkout submission via POST
 # TBD
-[o] Checkout submission via POST
-    * Redirect user to Post check-out page (tbd, different task)
-
-[ ] Show the user where parts are after checking out
+[o] Show the user where parts are after checking out
     * Add parts location field to db
     * Update db init
     * Make last
     * Use last checked-out info to show post checkout items
+    * No location text if abscense of location
     * Do css (ugh)
 [ ] Check in items page (w/ creating items)
     * Add js POST for creating items
@@ -33,8 +33,6 @@
     * User picks whether the item already exists or if it is a new type
     * User writes where the item is (short desc e.g. "Your parts are: {{user_pos_desc[i]}}")
     * User is shown a preview of what will be shown on check out
-[ ] Show user no items text if there is no items
-    * Do this in template
 [ ] Settings page (low priority)
     * db for settings
     * load settings from db
