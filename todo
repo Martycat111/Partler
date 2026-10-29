@@ -14,10 +14,6 @@
 [x] Count items checking out
 # TBD
 [o] Checkout submission via POST
-    * Remove items with count of 0
-    * Tell user if no items are being checkedout and reject
-    * Remove Items from db
-    * Set last checked-out info
     * Redirect user to Post check-out page (tbd, different task)
 
 [ ] Show the user where parts are after checking out

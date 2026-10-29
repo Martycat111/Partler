@@ -46,19 +46,25 @@ function checkout() {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-
+    // reload page to reflect changes, this shouldn't be necessary later because there will be another page
+    location.reload();
 }
 function update_running_total() {
     var number = get_total_items()
     var runningtotal = document.getElementsByClassName("total")
+    var checkoutbutton = document.getElementsByClassName("checkout-button")[0]
     runningtotal[0].innerText = `Running total: ${number}`
+    if (number == 0) {
+        console.log("disabling")
+        checkoutbutton.disabled = true
+    }
+    else {
+        console.log("enablimng")
+        checkoutbutton.disabled = false
+    }
 }
 
 function get_total_items() {
-    // Partial Source - https://stackoverflow.com/a/5338729
-    // Posted by erickb, modified by community. See post 'Timeline' for change history
-    // Retrieved 2026-10-24, License - CC BY-SA 4.0
-
     var elements = document.getElementsByClassName("numberInput");
     var number = 0;
 

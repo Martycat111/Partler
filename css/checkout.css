@@ -134,6 +134,7 @@ button {
 
   background-color: #AFAFAF;
 
+  min-height: 25px;
   height: 5vh;
   width: 80vw;
 
@@ -158,14 +159,14 @@ button {
   align-self: center;
   float: right;
 }
-
 .checkout-button {
   text-align: center;
+  min-height: 25px;
   height: 5vh;
-  aspect-ratio: 3/1; /* width, height */
+  width: 8vw;
   float: right;
 }
-.checkout-button :hover {
+.checkout-button:enabled:hover {
   background-color: #AFAFAF;
 }
 .checkout-button p{
@@ -198,4 +199,10 @@ button {
 .backbutton p {
   margin: 0;
   font-size: 1.4vw;
+}
+.noitems {
+  position: absolute;
+  justify-self: center;
+  font-size: 5vw;
+  color: #706f6f
 }

@@ -3,9 +3,25 @@ from datetime import datetime
 from tinydb import TinyDB, Query # type: ignore
 import json
 
+
+# functions
+
+def update_db():
+    #update the db to reflect the lists
+    parts.truncate()
+    parts.insert({'names': parts_names})
+    parts.insert({'count': parts_counts})
+    parts.insert({'image': parts_images})
+
+def update_lists():
+    #update the lists to reflect the db
+    parts_names  = parts.all()[0].get('names')
+    parts_counts = parts.all()[1].get('count')
+    parts_images = parts.all()[2].get('image')
+
 app = Bottle()
 
-### DATABASE
+# db
 
 parts = TinyDB('db/parts.json')
 partdb = Query()
@@ -37,15 +53,12 @@ except:
     None,
     "bam.png"]})
 
-# Retrieve records
+# Retrieve records initially
 username = user.all()[0].get('name')
-
 parts_names  = parts.all()[0].get('names')
 parts_counts = parts.all()[1].get('count')
 parts_images = parts.all()[2].get('image')
-
-
-# END DATABAEES
+# end db
 
 #main page
 main_path = "templates/main.html"
@@ -97,15 +110,30 @@ def index():
     #get data
     req_data = request.body.readlines()[0]
     data = json.loads(req_data)
-    #removing_names = data["names"]
+    removing_names = data["names"]
     removing_counts = data["counts"]
+
+    #last checked out functionality
+    last_checked_out_names = removing_names
+    last_checked_out_counts = removing_counts
+    last_checked_out_images = parts_images
 
     for i in range(0, len(removing_counts)):
         #runs for each item
-        print("remove item functionality here")
-        #if removing_counts[i] > 0:
+        #check if need to remove item
+        if removing_counts[i] > 0:
             #removing an item
-            #parts.update({'counts'[i]: removing_counts[i]})
+            if parts_counts[i] - removing_counts[i] <= 0:
+                print(f"removed: {parts_names[i]}, no items left")
+                parts_counts.remove(parts_counts[i])
+                parts_names.remove(parts_names[i])
+                parts_images.remove(parts_images[i])
+            else:
+                print(f"removed {removing_counts[i]} from {parts_names[i]}")
+                parts_counts[i] -= removing_counts[i]
+
+        
+    update_db()
 
 @app.route('/check-out') 
 def chkout():

@@ -17,6 +17,9 @@
 
     <titletext>Check-out parts here! </titletext>
     <div class="items">
+        % if len(names) == 0:
+          <p class="noitems">No items to check out</p>
+        % end
         % for i in range(len(names)):
             <div class="itemholder">
                 %if images[i] != None:
@@ -45,7 +48,7 @@
         % end
 
         <footer class="bottombar">
-          <button class="checkout-button" onclick="checkout()">
+          <button class="checkout-button" onclick="checkout()" disabled="true">
             <p>Check out!</p>
           </button>
           <p class="total">Running total: 0</p>
