@@ -12,12 +12,20 @@ def update_db():
     parts.insert({'names': parts_names})
     parts.insert({'count': parts_counts})
     parts.insert({'image': parts_images})
+    parts.insert({'location': parts_locations})
 
 def update_lists():
     #update the lists to reflect the db
     parts_names  = parts.all()[0].get('names')
     parts_counts = parts.all()[1].get('count')
     parts_images = parts.all()[2].get('image')
+    parts_locations = parts.all()[3].get('location')
+
+def add_item_to_lasts(i:int):
+    last_checked_out_names.append(parts_names[i])
+    last_checked_out_counts.append(parts_counts[i])
+    last_checked_out_images.append(parts_images[i])
+    last_checked_out_locations.append(parts_locations[i])
 
 app = Bottle()
 
@@ -53,16 +61,18 @@ except:
     None,
     "bam.png"]})
     parts.insert({'location': [
-    None,
-    None,
-    None,
-    "bam.png"]})
+        None,
+        "Under the bed, in the white box.",
+        "On the shelf",
+        "On shelf b"
+    ]})
 
 # Retrieve records initially
 username = user.all()[0].get('name')
 parts_names  = parts.all()[0].get('names')
 parts_counts = parts.all()[1].get('count')
 parts_images = parts.all()[2].get('image')
+parts_locations = parts.all()[3].get('location')
 # end db
 
 #main page
@@ -82,9 +92,10 @@ main_css = css.read()
 part_path = "templates/part.html"
 
 #default lasts
-last_checked_out_names = None
-last_checked_out_counts = None
-last_checked_out_images = None
+last_checked_out_names = []
+last_checked_out_counts = []
+last_checked_out_images = []
+last_checked_out_locations = []
 
 #pages
 @app.route('/')
@@ -121,6 +132,7 @@ def index():
     global last_checked_out_names
     global last_checked_out_counts
     global last_checked_out_images
+    global last_checked_out_locations
 
     #update available items on checkout
 
@@ -135,6 +147,7 @@ def index():
     last_checked_out_names = removing_names
     last_checked_out_counts = removing_counts
     last_checked_out_images = parts_images
+    last_checked_out_locations = parts_locations
 
     for i in range(0, len(removing_counts)):
         #runs for each item
@@ -147,20 +160,18 @@ def index():
                 parts_counts.remove(parts_counts[i])
                 parts_names.remove(parts_names[i])
                 parts_images.remove(parts_images[i])
+                parts_locations.remove(parts_locations[i])
             else:
                 print(f"removed {removing_counts[i]} from {parts_names[i]}")
                 parts_counts[i] -= removing_counts[i]
-
-        
     update_db()
+
 
 @app.route('/parts-location')
 def locate():
     loc = open(loc_path, "r")
     loc_tpl = SimpleTemplate(loc)
-    print(last_checked_out_counts)
-    print(last_checked_out_names)
-    return loc_tpl.render(items_counts=last_checked_out_counts, items_names=last_checked_out_names, images=last_checked_out_images)
+    return loc_tpl.render(items_counts=last_checked_out_counts, items_names=last_checked_out_names, images=last_checked_out_images, locations=last_checked_out_locations)
 @app.route('/check-out') 
 def chkout():
     checkout = open(checkout_path, "r")

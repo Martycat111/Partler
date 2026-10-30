@@ -2,6 +2,7 @@
 [o] = doing
 [ ] = not done
 
+
 # DONE
 [x] Home page w/ name and time greeting
 [x] Tinydb functionality
@@ -13,16 +14,12 @@
 [x] Dynamic resources on main.py
 [x] Count items checking out
 [x] Show user no items text if there is no items
+# DONE since last devlog
 [x] Checkout submission via POST
 [x] Adaptive rows on item grid - do for view and 
+[x] Show the user where parts are after checking out
+
 # TBD
-[o] Show the user where parts are after checking out
-    * Add parts location field to db
-    * Update db init
-    * Make last
-    * Use last checked-out info to show post checkout items
-    * No location text if abscense of location
-    * Do css (ugh)
 [ ] Check in items page (w/ creating items)
     * Add js POST for creating items
     * Add js POST for adding items to a pre-existing type
@@ -34,8 +31,11 @@
     * User picks whether the item already exists or if it is a new type
     * User writes where the item is (short desc e.g. "Your parts are: {{user_pos_desc[i]}}")
     * User is shown a preview of what will be shown on check out
+    
 [ ] Settings page (low priority)
     * db for settings
     * load settings from db
     * set checks based of db (js)
     * show or hide elements on each page based of settings (js)
+[ ] Fix larger gap on 1st item on location
+[ ] Fix up last items to only add items with an amount removed

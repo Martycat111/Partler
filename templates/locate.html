@@ -20,6 +20,7 @@
           <p class="noitems">No items have been checked out</p>
         % else:
         % for i in range(len(items_names)):
+        % if items_counts[i] > 0:
             <div class="itemholder">
                 %if images[i] != None:
                     <img class="itemimage" src="{{"img/" + images[i]}}">
@@ -27,23 +28,17 @@
                 %if images[i] == None:
                     <img class="itemimage" src="img/noimg.png">
                 %end
-                <div class="itemtextarea">
-                  <p class="itemname">{{items_names[i]}}</p>
-
-                  <input
-                  onChange="update_running_total()"
-                  class="numberInput"
-                  type="number"
-                  value="0"
-                  name="numberInput"
-                  min="0"
-                  max="{{items_counts[i]}}">
-
-                  <p class="available-amount">/ {{items_counts[i]}}</p>
-
-                  
+                <div class="itemtext">
+                <p class="itemname">{{items_names[i]}}</p>
+                <p class="checked-amount">Amount checked-out: {{items_counts[i]}}</p>
+                %if locations[i] != None:
+                  <p class="part-location-text">{{locations[i]}}</p>
+                % else:
+                  <p class="part-location-text">No location provided</p>
+                % end
                 </div>
-            </div>
+              </div>
+        % end
         % end
         % end
     </div>
