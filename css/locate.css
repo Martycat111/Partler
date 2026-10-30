@@ -37,8 +37,8 @@ titletext {
   justify-content: center;
 
   /* panel */
-  width: 10vw;
-  aspect-ratio: 1 / 1.1; 
+  width: 30vw;
+  aspect-ratio: 3 / 1; 
   background-color: whitesmoke;
   border: solid lightgrey;
   border-width: 3px;
@@ -172,4 +172,29 @@ titletext {
   border-radius: 20px;
   height: 20vh;
   aspect-ratio: 1.4 / 1;
+}
+.backbutton {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  position: absolute;
+  top: 1vw;
+  left: 1vw;
+  width: 7vw;
+  height: 3vw;
+
+  font-size: 25px;
+  font-weight: bolder;
+  border: solid black;
+  border-width: 3px;
+  border-radius: 20px;
+}
+.backbutton img {
+  width: 2vw;
+  height: 2vw;
+}
+.backbutton p {
+  margin: 0;
+  font-size: 1.4vw;
 }

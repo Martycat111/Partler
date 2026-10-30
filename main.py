@@ -117,6 +117,11 @@ def main():
 
 @app.route('/check-out/post', method='POST')
 def index():
+    #global vars used
+    global last_checked_out_names
+    global last_checked_out_counts
+    global last_checked_out_images
+
     #update available items on checkout
 
     #get data
@@ -126,6 +131,7 @@ def index():
     removing_counts = data["counts"]
 
     #last checked out functionality
+     
     last_checked_out_names = removing_names
     last_checked_out_counts = removing_counts
     last_checked_out_images = parts_images
@@ -134,6 +140,7 @@ def index():
         #runs for each item
         #check if need to remove item
         if removing_counts[i] > 0:
+
             #removing an item
             if parts_counts[i] - removing_counts[i] <= 0:
                 print(f"removed: {parts_names[i]}, no items left")
@@ -151,7 +158,9 @@ def index():
 def locate():
     loc = open(loc_path, "r")
     loc_tpl = SimpleTemplate(loc)
-    return loc_tpl.render(items_counts=last_checked_out_counts, items_names=last_checked_out_names )
+    print(last_checked_out_counts)
+    print(last_checked_out_names)
+    return loc_tpl.render(items_counts=last_checked_out_counts, items_names=last_checked_out_names, images=last_checked_out_images)
 @app.route('/check-out') 
 def chkout():
     checkout = open(checkout_path, "r")

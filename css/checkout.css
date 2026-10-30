@@ -109,11 +109,12 @@ titletext {
   grid-template-columns: repeat(12, 1fr);
 }
 .items {
+  margin-top: 20vh;
+  align-self: first baseline;
   width: 60vw;
-  height: 60vh;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(auto-fit, 12vw);
 }
 
 button {

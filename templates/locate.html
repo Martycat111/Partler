@@ -16,7 +16,7 @@
 
     <titletext>Checked out parts</titletext>
     <div class="items">
-        % if items_counts == None:
+        % if sum(items_counts) == 0:
           <p class="noitems">No items have been checked out</p>
         % else:
         % for i in range(len(items_names)):
@@ -37,7 +37,7 @@
                   value="0"
                   name="numberInput"
                   min="0"
-                  max="{{counts[i]}}">
+                  max="{{items_counts[i]}}">
 
                   <p class="available-amount">/ {{items_counts[i]}}</p>
 
@@ -46,13 +46,6 @@
             </div>
         % end
         % end
-
-        <footer class="bottombar">
-          <button class="checkout-button" onclick="checkout()" disabled="true">
-            <p>Check out!</p>
-          </button>
-          <p class="total">Running total: 0</p>
-        </footer>
     </div>
 
   </body>

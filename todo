@@ -14,6 +14,7 @@
 [x] Count items checking out
 [x] Show user no items text if there is no items
 [x] Checkout submission via POST
+[x] Adaptive rows on item grid - do for view and 
 # TBD
 [o] Show the user where parts are after checking out
     * Add parts location field to db
