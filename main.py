@@ -211,7 +211,7 @@ def rmitems():
         if removing_counts[i] > 0:
 
             #removing an item
-            if parts_counts[i] - removing_counts[i] <= 0:
+            if parts_counts[i] - removing_counts[i] == 0:
                 print(f"removed: {parts_names[i]}, no items left")
                 parts_counts.remove(parts_counts[i])
                 parts_names.remove(parts_names[i])
@@ -227,6 +227,7 @@ def rmitems():
 def locate():
     loc = open(loc_path, "r")
     loc_tpl = SimpleTemplate(loc)
+    # theres a builtin error here
     return loc_tpl.render(items_counts=last_checked_out_counts, items_names=last_checked_out_names, images=last_checked_out_images, locations=last_checked_out_locations)
 
 @app.route('/check-out') 
