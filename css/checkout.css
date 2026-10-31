@@ -34,23 +34,11 @@ titletext {
   margin: 0.2vw;
 }
 
-.itemimage{
-  /* now thats silly 
-  the item image
-  */
-  border-radius: 1.8vw 1.8vw 0vw 0vw;
-  width: 10vw;
-  bottom: 2vw;
-
-  object-fit: cover;
-
-}
-
 .itemtextarea{
   align-items: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
+  gap: 5px;
   position: absolute;
   bottom: 0px;
   width: 10vw;
@@ -69,7 +57,7 @@ titletext {
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .available-amount {
-  width: 2vw;
+  width: 3vw;
   font-size: 1vw;
   font-weight: bold;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

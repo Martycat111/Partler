@@ -16,17 +16,17 @@
 [x] Show user no items text if there is no items
 
 # DONE since last devlog
+[x] Check in items page 
 [x] Checkout submission via POST
 [x] Adaptive rows on item grid - do for view and 
 [x] Show the user where parts are after checking out
+[x] Check if user added an image
+[x] Css continuity over pages
+[x] Image uploading/saving
+[x] Enable / Disable form submission button based on wether the parts are filled out
+
 
 # TBD
-[ ] Check in items page 
-    * Add js POST for creating items
-    * "Add item type" button
-    * User writes where the item is (short desc)
-
-
 
 # NON PRIORITY
 [ ] Settings page

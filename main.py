@@ -2,7 +2,7 @@ from bottle import Bottle, run, static_file, response, SimpleTemplate, request #
 from datetime import datetime
 from tinydb import TinyDB, Query # type: ignore
 import json
-
+import os
 
 # functions
 
@@ -130,15 +130,12 @@ def main():
 
 @app.route('/check-in/add-count', method='POST') 
 def addcount():
+    # add amount to items
     #get data
     req_data = request.body.readlines()[0]
     data = json.loads(req_data)
     adding_names = data["names"]
     adding_counts = data["counts"]
-    print(adding_names)
-    print(adding_counts)
-
-
     for i in range(0, len(adding_counts)):
             #runs for each item
             #check if need to add to item
@@ -147,6 +144,43 @@ def addcount():
                 print(f"added {adding_counts[i]} to {parts_names[i]}")
                 parts_counts[i] += adding_counts[i]
     update_db()
+
+
+
+@app.route('/check-in/add-type', method='POST') 
+def addtype():
+    global new_name
+    #get data
+    req_data = request.body.readlines()[0]
+    data = json.loads(req_data)
+    #parts of data
+    new_name = data["name"]
+    new_count = data["count"]
+    new_location = data["location"]
+
+    parts_names.append(new_name)
+    parts_counts.append(new_count)
+    parts_locations.append(new_location)
+    
+
+@app.route('/check-in/add-type-img', method='POST') 
+def do_upload():
+    #this is run after addtype
+    upload = request.files.get('upload')
+    if upload is not None:
+        name, ext = os.path.splitext(upload.filename)
+        filename = new_name + ext
+        save_path = "img/" + filename
+        upload.save(save_path)
+    else:
+        filename = None
+    
+    #finish filling in fields and update db
+    parts_images.append(filename)
+
+    update_db()
+
+
 
 @app.route('/check-out/post', method='POST')
 def rmitems():

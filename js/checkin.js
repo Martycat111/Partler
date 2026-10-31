@@ -1,13 +1,80 @@
 function addtype_popup() {
     //show the add type popup
-    console.log("mr")
     var popup = document.getElementsByClassName("addtype-popup")[0];
     popup.style.display = "inline";
 }
 
+function hide_addtype() {
+    // hide the add type popup
+    var popup = document.getElementsByClassName("addtype-popup")[0];
+    popup.style.display = "none";
+}
+
+function update_form_button() {
+    var count = document.getElementById("newitemcount").valueAsNumber
+    var name = document.getElementById("newitemname").value
+    var submitbutton = document.getElementsByClassName("addtype-submit")[0]
+    if (count == 0) {
+        submitbutton.disabled = true
+    }
+    if (name == null) {
+        submitbutton.disabled = true
+    }
+    if (name != null & count != 0 & count != NaN) {
+        submitbutton.disabled = false
+    }
+}
+
+function addtype() {
+    // initial json object
+    const jsonObject = {};
+
+    // get elements for use
+    var itemname = document.getElementById("newitemname")
+    var itemcount = document.getElementById("newitemcount")
+    var itemlocation = document.getElementById("newitemlocation")
+    var itemimage = document.getElementById("newitemimage")
+
+    //add content to the json
+    jsonObject.name = itemname.value;
+    jsonObject.count = itemcount.valueAsNumber;
+    jsonObject.location = itemlocation.value;
+
+    var image = itemimage.files[0]
+
+    // turn obj into json
+    const jsonString = JSON.stringify(jsonObject);
+
+    // POST request using fetch(), for json
+    fetch([window.location.href, "/add-type"].join(""), {
+        // Adding method type
+        method: "POST",
+        // Adding body or contents to send
+        body: jsonString
+    })
+
+    // send image
+
+    const files = itemimage.files;
+
+    const formData = new FormData();
+    for (let file of files) {
+      formData.append('upload', file);
+    }
+
+    fetch([window.location.href, "/add-type-img"].join(""), {
+        method: 'POST',
+        body: formData,
+    })
+
+
+
+
+    // reload page
+    location.reload();
+}
 
 function checkin() {
-
     // initial json object
     const jsonObject = {};
 

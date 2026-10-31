@@ -33,18 +33,6 @@ titletext {
 
   margin: 0.2vw;
 }
-
-.itemimage{
-  /* now thats silly 
-  the item image
-  */
-  border-radius: 1.8vw 1.8vw 0vw 0vw;
-  width: 10vw;
-  bottom: 2vw;
-
-  object-fit: cover;
-
-}
 .uppertext {
   display: grid;
   grid-template-rows: 1fr;
@@ -70,9 +58,9 @@ titletext {
   */
   margin: 0.2vw;
   margin-top: 0.3vw;
-  justify-self: right;
   text-align: right;
-  width: 4vw;
+  align-self: right;
+  width: 5vw;
   font-size: 1vw;
   font-weight: bold;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -223,7 +211,10 @@ button {
   color: #706f6f
 }
 .addtype-popup {
+  justify-items: center;
+  justify-content: center;
   position: absolute;
+  justify-self: center;
   background-color: darkgrey;
   width: 40vw;
   height: 60vh;
@@ -231,7 +222,67 @@ button {
   border: solid gray;
   border-width: medium;
 
-  border-radius: 5vw;
+  border-radius: 3vw;
 
   display: none;
+}
+.addtype-exit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  position: absolute;
+  top: 0.6vw;
+  left: 0.6vw;
+  width: 7vw;
+  height: 3vw;
+
+  font-size: 25px;
+  font-weight: bolder;
+  border: solid black;
+  border-width: 3px;
+  border-radius: 20px;
+  align-items: center;
+  align-content: center;
+}
+.addtype-exit img {
+  width: 2vw;
+  height: 2vw;
+}
+.addtype-exit p {
+  margin: 0;
+  font-size: 1.4vw;
+}
+.addtype-toptext {
+  /*position: absolute;
+  top: 2vh;
+  */
+  margin-top: 1vh;
+  margin: 0;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 2vw;
+}
+.addtype-form p {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1vw;
+}
+.addtype-form {
+  width: 20vw;
+  height: 30vh;
+  display: grid;
+  gap: 1vw;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+}
+.addform-left {
+  align-items: end;
+}
+.addform-right {
+  align-items: end;
+}
+.addtype-submit {
+  position: relative;
+  left: 20vw;
+  top: 1vh; 
 }

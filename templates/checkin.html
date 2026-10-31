@@ -38,8 +38,7 @@
                   type="number"
                   value="0"
                   name="numberInput"
-                  min="0"
-                  max="{{counts[i]}}">
+                  min="0">
                   </div>
                   <p class="available-amount center">Current: {{counts[i]}}</p>
 
@@ -48,8 +47,32 @@
             </div>
         % end
 
-        <div class="addtype-popup">
-          <p>addtype stuff here</p>
+        <div class="addtype-popup" id="settings">
+          <button class="addtype-exit" onclick="hide_addtype()">
+            <img src="img/back.png">
+            <p>back</p>
+          </button>
+
+          <p class="addtype-toptext">New item type</p>
+          <div class="addtype-form">
+            <div class="addform-left">
+              <p>Name:</p>
+              <input id="newitemname" maxlength=8 onchange="update_form_button()"/>
+
+              <p>Initial count:</p>
+              <input type="number" min="0" id="newitemcount" onchange="update_form_button()"/>
+            </div>
+
+            <div class="addform-right">
+              <p>Item image <br> (optional):</p>
+                <input id="newitemimage" type="file" accept="image/*"/>
+
+              <p>Item location <br> (optional):</p>
+              <input type="text" id="newitemlocation"/>
+            </div>
+          
+          </div>
+          <input class="addtype-submit" value="Submit" type="submit" onclick="addtype()" disabled="true"/>
         </div>
 
         <footer class="bottombar">

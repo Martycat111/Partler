@@ -34,17 +34,6 @@ titletext {
   margin: 0.2vw;
 }
 
-.itemimage{
-  /* now thats silly 
-  the item image
-  */
-  border-radius: 1.8vw 1.8vw 0vw 0vw;
-  width: 10vw;
-  bottom: 2vw;
-
-  object-fit: cover;
-
-}
 
 .itemtextarea{
   position: absolute;
@@ -77,7 +66,7 @@ titletext {
   grid-template-rows: 1fr;
   justify-self: right;
   align-self: start;
-  width: 2vw;
+  width: 2.4vw;
   height: 1vw;
 }
 
