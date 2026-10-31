@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/css/global.css" rel="stylesheet"/>
+    <link href="/css/checkin.css" rel="stylesheet"/>
+    <script src="/js/checkin.js"></script>
+  </head>
+
+  <body class="center">
+
+    <a href="/">
+    <button class="backbutton">
+      <img src="img/back.png">
+      <p>back</p>
+    </button>
+    </a>
+
+    <titletext>Add parts here! </titletext>
+    <div class="items">
+        % if len(names) == 0:
+          <p class="noitems">No items to add to, create a new type.</p>
+        % end
+        % for i in range(len(names)):
+            <div class="itemholder">
+                %if images[i] != None:
+                    <img class="itemimage" src="{{"img/" + images[i]}}">
+                %end
+                %if images[i] == None:
+                    <img class="itemimage" src="img/noimg.png">
+                %end
+                <div class="itemtextarea">
+                  <div class="uppertext">
+                  <p class="itemname">{{names[i]}}</p>
+
+                  <input
+                  onChange="update_running_total()"
+                  class="numberInput"
+                  type="number"
+                  value="0"
+                  name="numberInput"
+                  min="0"
+                  max="{{counts[i]}}">
+                  </div>
+                  <p class="available-amount center">Current: {{counts[i]}}</p>
+
+                  
+                </div>
+            </div>
+        % end
+
+        <div class="addtype-popup">
+          <p>addtype stuff here</p>
+        </div>
+
+        <footer class="bottombar">
+          <button class="add-type-button" onclick="addtype_popup()">
+            <p>Add item type</p>
+          </button>
+
+          <button class="checkout-button" onclick="checkin()" disabled="true">
+            <p>Add!</p>
+          </button>
+          <p class="total">Running total: 0</p>
+        </footer>
+    </div>
+
+  </body>
+
+</html>

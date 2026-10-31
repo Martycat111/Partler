@@ -95,21 +95,6 @@ titletext {
   height: 1vw;
 }
 
-#minus {
-  border-radius: 20px 0px 0px 20px;
-}
-
-#plus {
-  border-radius: 0px 20px 20px 0px;
-}
-
-#plus p {
-  right: 0.3vw;
-}
-#minus p {
-  right: 0.2vw;
-}
-
 .countinput button p {
   font-size: 1vw;
   font-weight: bold;

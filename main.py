@@ -81,6 +81,9 @@ main_path = "templates/main.html"
 #checkout parts page
 checkout_path = "templates/checkout.html"
 
+#checkin parts page
+checkin_path = "templates/checkin.html"
+
 #find parts (after checkout) page
 loc_path = "templates/locate.html"
 
@@ -125,9 +128,28 @@ def main():
     
     return main_tpl.render(time_greeting=greet, name=username)
 
+@app.route('/check-in/add-count', method='POST') 
+def addcount():
+    #get data
+    req_data = request.body.readlines()[0]
+    data = json.loads(req_data)
+    adding_names = data["names"]
+    adding_counts = data["counts"]
+    print(adding_names)
+    print(adding_counts)
+
+
+    for i in range(0, len(adding_counts)):
+            #runs for each item
+            #check if need to add to item
+            if adding_counts[i] > 0:
+                #adding to an item
+                print(f"added {adding_counts[i]} to {parts_names[i]}")
+                parts_counts[i] += adding_counts[i]
+    update_db()
 
 @app.route('/check-out/post', method='POST')
-def index():
+def rmitems():
     #global vars used
     global last_checked_out_names
     global last_checked_out_counts
@@ -172,11 +194,19 @@ def locate():
     loc = open(loc_path, "r")
     loc_tpl = SimpleTemplate(loc)
     return loc_tpl.render(items_counts=last_checked_out_counts, items_names=last_checked_out_names, images=last_checked_out_images, locations=last_checked_out_locations)
+
 @app.route('/check-out') 
 def chkout():
     checkout = open(checkout_path, "r")
     checkout_tpl = SimpleTemplate(checkout)
     return checkout_tpl.render(names=parts_names, counts=parts_counts, images=parts_images)
+
+@app.route('/check-in') 
+def chkin():
+    checkin = open(checkin_path, "r")
+    checkin_tpl = SimpleTemplate(checkin)
+    return checkin_tpl.render(names=parts_names, counts=parts_counts, images=parts_images)
+
 
 @app.route('/view-parts')
 def view_parts():

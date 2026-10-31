@@ -39,4 +39,4 @@ and order only the ones you need.
 * Check out my Stardance below! :)
 
 ## Links:
-[Stardance](https://stardance.hackclub.com/projects/67782)
+[Stardance](https://stardance.hackclub.com/projects/67782)s

@@ -14,28 +14,26 @@
 [x] Dynamic resources on main.py
 [x] Count items checking out
 [x] Show user no items text if there is no items
+
 # DONE since last devlog
 [x] Checkout submission via POST
 [x] Adaptive rows on item grid - do for view and 
 [x] Show the user where parts are after checking out
 
 # TBD
-[ ] Check in items page (w/ creating items)
+[ ] Check in items page 
     * Add js POST for creating items
-    * Add js POST for adding items to a pre-existing type
-    * update Db so there isn't stale info and the script doesn't have to restart.
-        - refresh db function
-        - see "# Retrieve records" 
-        - run function after check in and out
-    * "Add item" button
-    * User picks whether the item already exists or if it is a new type
-    * User writes where the item is (short desc e.g. "Your parts are: {{user_pos_desc[i]}}")
-    * User is shown a preview of what will be shown on check out
-    
-[ ] Settings page (low priority)
-    * db for settings
+    * "Add item type" button
+    * User writes where the item is (short desc)
+
+
+
+# NON PRIORITY
+[ ] Settings page
+    * db for saving settings
     * load settings from db
     * set checks based of db (js)
     * show or hide elements on each page based of settings (js)
 [ ] Fix larger gap on 1st item on location
 [ ] Fix up last items to only add items with an amount removed
+[ ] Help buttons on each page explaining the parts of the item ui
