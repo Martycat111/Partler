@@ -46,9 +46,25 @@ function checkout() {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-    // change page
-    var base_url = window.location.origin;
-    document.location.href = [base_url, "/parts-location"].join("");
+
+    // gng why do i have to do this firefox?!??
+    // Get the user-agent string
+    let userAgentString = navigator.userAgent;
+    // check if on firefox
+    let isonfirefox = userAgentString.indexOf("Firefox") > -1;
+    if (isonfirefox) { 
+        // change page after 1s
+        setTimeout(() => {
+            var base_url = window.location.origin;
+            document.location.href = [base_url, "/parts-location"].join("");
+        }, 1000);
+    }
+    else {
+        // change page instantly
+        var base_url = window.location.origin;
+        document.location.href = [base_url, "/parts-location"].join("");
+    }
+
 }
 function update_running_total() {
     var number = get_total_items()
