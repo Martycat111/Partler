@@ -113,10 +113,21 @@ function checkin() {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-    setTimeout(() => {
-        // reload the page
+    // gng why do i have to do this firefox?!??
+    // Get the user-agent string
+    let userAgentString = navigator.userAgent;
+    // check if on firefox
+    let isonfirefox = userAgentString.indexOf("Firefox") > -1;
+    if (isonfirefox) { 
+        // reload page after 1s
+        setTimeout(() => {
+            location.reload();
+        }, 1000);
+    }
+    else {
+        // reload page instantly
         location.reload();
-    }, 1000);  // Waits for 1 sec
+    }
 }
 function update_running_total() {
     var number = get_total_items()
