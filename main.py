@@ -3,6 +3,7 @@ from datetime import datetime
 from tinydb import TinyDB, Query # type: ignore
 import json
 import os
+from time import sleep
 
 # functions
 
@@ -209,12 +210,11 @@ def rmitems():
         #runs for each item
         #check if need to remove item
         if removing_counts[i] > 0:
-
             #removing an item
             if parts_counts[i] - removing_counts[i] == 0:
                 print(f"removed: {parts_names[i]}, no items left")
-                parts_counts.remove(parts_counts[i])
-                parts_names.remove(parts_names[i])
+                parts_counts.remove(removing_counts[i])
+                parts_names.remove(removing_names[i])
                 parts_images.remove(parts_images[i])
                 parts_locations.remove(parts_locations[i])
             else:
@@ -240,6 +240,7 @@ def chkout():
 def chkin():
     checkin = open(checkin_path, "r")
     checkin_tpl = SimpleTemplate(checkin)
+    sleep(0.5)
     return checkin_tpl.render(names=parts_names, counts=parts_counts, images=parts_images)
 
 
