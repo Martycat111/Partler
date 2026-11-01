@@ -16,6 +16,7 @@ function checkout() {
     // get elements for use
     var itemnames = document.getElementsByClassName("itemname");
     var itemcounts = document.getElementsByClassName("numberInput");
+
     var numitems = document.getElementsByClassName("itemholder").length; // had item instead of itemholder. spent 2 hours debugging this
 
     // initialize arrays to put info into

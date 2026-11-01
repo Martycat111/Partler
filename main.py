@@ -211,15 +211,22 @@ def rmitems():
         #check if need to remove item
         if removing_counts[i] > 0:
             #removing an item
-            if parts_counts[i] - removing_counts[i] == 0:
-                print(f"removed: {parts_names[i]}, no items left")
-                parts_counts.remove(removing_counts[i])
-                parts_names.remove(removing_names[i])
-                parts_images.remove(parts_images[i])
-                parts_locations.remove(parts_locations[i])
-            else:
-                print(f"removed {removing_counts[i]} from {parts_names[i]}")
-                parts_counts[i] -= removing_counts[i]
+            try:
+                if parts_counts[i] - removing_counts[i] == 0:
+                    print(f"removed: {parts_names[i]}, no items left")
+                    parts_counts[i] = 0
+                else:
+                    print(f"removed {removing_counts[i]} from {parts_names[i]}")
+                    parts_counts[i] -= removing_counts[i]
+            except:
+                print(removing_counts)
+                print(parts_counts)
+    for i in range(0, len(parts_counts) - 1):
+        if parts_counts[i] == 0:
+            parts_counts.remove(parts_counts[i])
+            parts_names.remove(parts_names[i])
+            parts_images.remove(parts_images[i])
+            parts_locations.remove(parts_locations[i])
     update_db()
 
 
@@ -227,7 +234,7 @@ def rmitems():
 def locate():
     loc = open(loc_path, "r")
     loc_tpl = SimpleTemplate(loc)
-    # theres a builtin error here
+    # len(last_checked_out_counts) is sometimes not = len(last_checked_out_locations). Due to lines 204 - 207
     return loc_tpl.render(items_counts=last_checked_out_counts, items_names=last_checked_out_names, images=last_checked_out_images, locations=last_checked_out_locations)
 
 @app.route('/check-out') 
