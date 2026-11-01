@@ -97,7 +97,7 @@ function checkin() {
 
     //add arrays to the json
     jsonObject.names = names;
-    jsonObject.counts = counts;
+    jsonObject.counts = counts
 
     // turn obj into json
     const jsonString = JSON.stringify(jsonObject);
@@ -116,7 +116,7 @@ function checkin() {
     setTimeout(() => {
         // reload the page
         location.reload();
-    }, 500);  // Waits for 0.5 sec
+    }, 1000);  // Waits for 1 sec
 }
 function update_running_total() {
     var number = get_total_items()
