@@ -27,7 +27,7 @@
 
 
 # TBD
-
+[ ] BUG - firefox NS_BINDING_ABORTED due to expiry headers being nonexistent?
 # NON PRIORITY
 [ ] Settings page
     * db for saving settings
