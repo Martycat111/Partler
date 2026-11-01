@@ -75,7 +75,6 @@ function addtype() {
 }
 
 function checkin() {
-    preventDefault();
     // initial json object
     const jsonObject = {};
 
@@ -114,8 +113,10 @@ function checkin() {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-    // reload page
-    location.reload();
+    setTimeout(() => {
+        // reload the page
+        location.reload();
+    }, 500);  // Waits for 0.5 sec
 }
 function update_running_total() {
     var number = get_total_items()
