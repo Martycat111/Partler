@@ -240,7 +240,7 @@ def chkout():
 def chkin():
     checkin = open(checkin_path, "r")
     checkin_tpl = SimpleTemplate(checkin)
-    sleep(0.5)
+    sleep(0.01) #small delay for db update
     return checkin_tpl.render(names=parts_names, counts=parts_counts, images=parts_images)
 
 
