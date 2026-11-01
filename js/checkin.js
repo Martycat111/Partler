@@ -75,6 +75,7 @@ function addtype() {
 }
 
 function checkin() {
+    preventDefault();
     // initial json object
     const jsonObject = {};
 
