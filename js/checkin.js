@@ -17,10 +17,25 @@ function update_form_button() {
     if (count == 0) {
         submitbutton.disabled = true
     }
-    if (name == null) {
+    else if (count == null) {
         submitbutton.disabled = true
     }
-    if (name != null & count != 0 & count != NaN) {
+    else if (count == '') {
+        submitbutton.disabled = true
+    }
+    else if (name == '') {
+        submitbutton.disabled = true
+    }
+    else if (name == null) {
+        submitbutton.disabled = true
+    }
+    else if (name == NaN) {
+        submitbutton.disabled = true
+    }
+    else if (count == NaN) {
+        submitbutton.disabled = true
+    }
+    else {
         submitbutton.disabled = false
     }
 }

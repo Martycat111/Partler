@@ -31,11 +31,7 @@
                 <div class="itemtext">
                 <p class="itemname">{{items_names[i]}}</p>
                 <p class="checked-amount">Amount checked-out: {{items_counts[i]}}</p>
-                %if locations[i] != "":
-                  <p class="part-location-text">{{locations[i]}}</p>
-                % else:
-                  <p class="part-location-text">No location provided</p>
-                % end
+                <p class="part-location-text">{{locations[i]}}</p>
                 </div>
               </div>
         % end

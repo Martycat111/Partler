@@ -22,11 +22,12 @@ def update_lists():
     parts_images = parts.all()[2].get('image')
     parts_locations = parts.all()[3].get('location')
 
-def add_item_to_lasts(i:int):
+def add_item_to_lasts(i:int, removing_counts):
     last_checked_out_names.append(parts_names[i])
-    last_checked_out_counts.append(parts_counts[i])
+    last_checked_out_counts.append(removing_counts[i])
     last_checked_out_images.append(parts_images[i])
     last_checked_out_locations.append(parts_locations[i])
+
 
 app = Bottle()
 
@@ -201,10 +202,10 @@ def rmitems():
 
     #last checked out functionality
      
-    last_checked_out_names = removing_names
-    last_checked_out_counts = removing_counts
-    last_checked_out_images = parts_images
-    last_checked_out_locations = parts_locations
+    last_checked_out_names = []
+    last_checked_out_counts = []
+    last_checked_out_images = []
+    last_checked_out_locations = []
 
     for i in range(0, len(removing_counts)):
         #runs for each item
@@ -214,9 +215,11 @@ def rmitems():
             try:
                 if parts_counts[i] - removing_counts[i] == 0:
                     print(f"removed: {parts_names[i]}, no items left")
+                    add_item_to_lasts(i, removing_counts)
                     parts_counts[i] = 0
                 else:
                     print(f"removed {removing_counts[i]} from {parts_names[i]}")
+                    add_item_to_lasts(i, removing_counts)
                     parts_counts[i] -= removing_counts[i]
             except:
                 print(removing_counts)
@@ -235,6 +238,10 @@ def locate():
     loc = open(loc_path, "r")
     loc_tpl = SimpleTemplate(loc)
     # len(last_checked_out_counts) is sometimes not = len(last_checked_out_locations). Due to lines 204 - 207
+    # fixed haha
+    for i in range(0, len(last_checked_out_locations)):
+        if last_checked_out_locations[i] == '':
+            last_checked_out_locations[i] = "No location provided"
     return loc_tpl.render(items_counts=last_checked_out_counts, items_names=last_checked_out_names, images=last_checked_out_images, locations=last_checked_out_locations)
 
 @app.route('/check-out') 
