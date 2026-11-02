@@ -40,6 +40,8 @@ Before you start a project,
 check which parts you have with "view stock",  
 and order only the ones you need.
 
+# AI
+No ai was used whatsoever in the creation, research, or development of this project.
 
 ## How to contribute:
 * Find bugs and submit them as issues on [this page](https://github.com/Martycat111/Partler/issues/new?q=is:issue+state:open).
