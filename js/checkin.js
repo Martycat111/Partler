@@ -14,25 +14,25 @@ function update_form_button() {
     var count = document.getElementById("newitemcount").valueAsNumber
     var name = document.getElementById("newitemname").value
     var submitbutton = document.getElementsByClassName("addtype-submit")[0]
-    if (count == 0) {
+    if (count = 0) {
         submitbutton.disabled = true
     }
-    else if (count == null) {
+    else if (count = null) {
         submitbutton.disabled = true
     }
-    else if (count == '') {
+    else if (count = '') {
         submitbutton.disabled = true
     }
-    else if (name == '') {
+    else if (name = '') {
         submitbutton.disabled = true
     }
-    else if (name == null) {
+    else if (name = null) {
         submitbutton.disabled = true
     }
-    else if (name == NaN) {
+    else if (name = NaN) {
         submitbutton.disabled = true
     }
-    else if (count == NaN) {
+    else if (count = NaN) {
         submitbutton.disabled = true
     }
     else {
@@ -41,6 +41,7 @@ function update_form_button() {
 }
 
 function addtype() {
+    // THIS FUNCTION IS SUSPECTED
     // initial json object
     const jsonObject = {};
 
@@ -68,8 +69,8 @@ function addtype() {
         body: jsonString
     })
 
-    // send image
 
+    // send image
     const files = itemimage.files;
 
     const formData = new FormData();

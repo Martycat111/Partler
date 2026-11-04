@@ -9,11 +9,20 @@ from time import sleep
 
 def update_db():
     #update the db to reflect the lists
-    parts.truncate()
-    parts.insert({'names': parts_names})
-    parts.insert({'count': parts_counts})
-    parts.insert({'image': parts_images})
-    parts.insert({'location': parts_locations})
+    len_a = len(parts_names)
+    len_b = len(parts_counts)
+    len_c = len(parts_images)
+    len_d = len(parts_locations)
+    if (len_a == len_b == len_c == len_d):
+        parts.truncate()
+        parts.insert({'names': parts_names})
+        parts.insert({'count': parts_counts})
+        parts.insert({'image': parts_images})
+        parts.insert({'location': parts_locations})
+    else:
+        # list len bad
+        print("List lengths are not equal")
+        print([len_a, len_b, len_c, len_d])
 
 def update_lists():
     #update the lists to reflect the db
@@ -27,6 +36,15 @@ def add_item_to_lasts(i:int, removing_counts):
     last_checked_out_counts.append(removing_counts[i])
     last_checked_out_images.append(parts_images[i])
     last_checked_out_locations.append(parts_locations[i])
+
+def rm_index_list(i:int, list:list):
+    list.remove(list[i])
+
+def remove_item(i:int):
+    rm_index_list(i, parts_names)
+    rm_index_list(i, parts_counts)
+    rm_index_list(i, parts_images)
+    rm_index_list(i, parts_locations)
 
 
 app = Bottle()
@@ -174,7 +192,9 @@ def do_upload():
         filename = new_name + ext
         save_path = "img/" + filename
         upload.save(save_path)
+        print("yes file")
     else:
+        print("no file")
         filename = None
     
     #finish filling in fields and update db
@@ -216,14 +236,16 @@ def rmitems():
                 if parts_counts[i] - removing_counts[i] == 0:
                     print(f"removed: {parts_names[i]}, no items left")
                     add_item_to_lasts(i, removing_counts)
-                    parts_counts[i] = 0
+                    remove_item(i)
                 else:
                     print(f"removed {removing_counts[i]} from {parts_names[i]}")
                     add_item_to_lasts(i, removing_counts)
                     parts_counts[i] -= removing_counts[i]
-            except:
+            except Exception as e:
+                print("ERROR")
                 print(removing_counts)
                 print(parts_counts)
+                raise(e)
     for i in range(0, len(parts_counts) - 1):
         if parts_counts[i] == 0:
             parts_counts.remove(parts_counts[i])
