@@ -23,6 +23,11 @@ def update_db():
         # list len bad
         print("List lengths are not equal")
         print([len_a, len_b, len_c, len_d])
+        arr = [len_a, len_b, len_c, len_d]
+        highest = max(arr)
+        while not (len_a == len_b == len_c == len_d):
+            print("removed 1 from longest list")
+            highest.remove(len(highest))
 
 def update_lists():
     #update the lists to reflect the db
@@ -192,9 +197,7 @@ def do_upload():
         filename = new_name + ext
         save_path = "img/" + filename
         upload.save(save_path)
-        print("yes file")
     else:
-        print("no file")
         filename = None
     
     #finish filling in fields and update db
@@ -241,11 +244,9 @@ def rmitems():
                     print(f"removed {removing_counts[i]} from {parts_names[i]}")
                     add_item_to_lasts(i, removing_counts)
                     parts_counts[i] -= removing_counts[i]
-            except Exception as e:
-                print("ERROR")
-                print(removing_counts)
-                print(parts_counts)
-                raise(e)
+            except TypeError:
+                print("Type error")
+                remove_item(i)
     for i in range(0, len(parts_counts) - 1):
         if parts_counts[i] == 0:
             parts_counts.remove(parts_counts[i])
@@ -306,4 +307,4 @@ def script(file):
 
 #run
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=80, reloader=True)
